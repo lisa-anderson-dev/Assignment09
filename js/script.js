@@ -33,9 +33,9 @@ function init() {
 
     // GET THE VALUES FROM THE TEXT BOXES
 
-        let newId = document.querySelector('#id').value;
+        let newId = Number(document.querySelector('#id').value);
         let newName = document.querySelector('#name').value;
-        let newExtension = document.querySelector('#extension').value;
+        let newExtension = Number(document.querySelector('#extension').value);
         let newEmail = document.querySelector('#email').value;
         let newDepartment = document.querySelector('#department').value;
 
@@ -68,7 +68,7 @@ function init() {
     empTable.addEventListener('click', (e) => {
     // GET THE SELECTED ROWINDEX FOR THE TR (PARENTNODE.PARENTNODE)
 
-        let targetRow = e.target.parentElement;
+        let targetRow = e.target.parentElement.tagName === 'TD' ? e.target.parentElement.parentElement : e.target.parentElement;
         let deleteName = targetRow.children[1].innerText;
         let rowIndex = targetRow.rowIndex;  
 
@@ -108,7 +108,8 @@ function init() {
             row.innerHTML = '';
             for (let field of employee) {
                 row.innerHTML += `<td>${field}</td>`;
-            } 
+            }
+            row.innerHTML += `<td><button class='btn btn-danger btn-sm float-right'>X</button></td>`;
             tableBody.appendChild(row);
         }
 
