@@ -66,7 +66,6 @@ function init() {
 
 // DELETE EMPLOYEE
     empTable.addEventListener('click', (e) => {
-
     // GET THE SELECTED ROWINDEX FOR THE TR (PARENTNODE.PARENTNODE)
 
         let targetRow = e.target.parentElement;
@@ -104,15 +103,12 @@ function init() {
     // LOOP THROUGH THE ARRAY OF EMPLOYEES
     // REBUILDING THE ROW STRUCTURE
 
-        let row, cellId, cellName, cellExtension, cellEmail, cellDepartment;
         for (let employee of employeeList) {
-            row = document.createElement('tr');
-            cellId = `<td>${employee[0]}</td>`;
-            cellName = `<td>${employee[1]}</td>`;
-            cellExtension = `<td>${employee[2]}</td>`;
-            cellEmail = `<td>${employee[3]}</td>`;
-            cellDepartment = `<td>${employee[4]}</td>`;
-            row.innerHTML = `${cellId}${cellName}${cellExtension}${cellEmail}${cellDepartment}`
+            let row = document.createElement('tr');
+            row.innerHTML = '';
+            for (let field of employee) {
+                row.innerHTML += `<td>${field}</td>`;
+            } 
             tableBody.appendChild(row);
         }
 
