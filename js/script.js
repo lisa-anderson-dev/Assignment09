@@ -68,13 +68,12 @@ function init() {
     empTable.addEventListener('click', (e) => {
     // GET THE SELECTED ROWINDEX FOR THE TR (PARENTNODE.PARENTNODE)
 
-        let targetRow = e.target.parentElement.tagName === 'TD' ? e.target.parentElement.parentElement : e.target.parentElement;
-        let deleteName = targetRow.children[1].innerText;
+        let targetRow = e.target.parentElement.parentElement;
         let rowIndex = targetRow.rowIndex;  
-
+        
     // CONFIRM THE DELETE
   
-        if (rowIndex > 0 && confirm(`Are you sure you want to delete ${deleteName}?`)) {
+        if (rowIndex > 0 && confirm(`Are you sure you want to delete ${targetRow.children[1].innerText}?`)) {
 
         // CALL DELETEROW() METHOD TO DELETE SPECIFIC ROW IN THE TABLE
 
